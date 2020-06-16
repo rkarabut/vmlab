@@ -10,7 +10,7 @@ sudo apt-get -q -y update
 sudo apt-get -q -y install aptitude curl netselect-apt whois
 
 COUNTRY=$(whois $(curl ifconfig.me) | grep country: | awk '{print $2}')
-sudo netselect-apt -a amd64 -c $COUNTRY -s -n -o /etc/apt/sources.list testing > /dev/null
+sudo netselect-apt -a amd64 -c $COUNTRY -s -n -o /etc/apt/sources.list testing >/dev/null 2>&1
 
 # update to testing
 sudo apt-get -q -y update
