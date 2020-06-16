@@ -104,6 +104,9 @@ icon-theme='Tango'
 [org/mate/desktop/peripherals/keyboard]
 numlock-state='on'
 
+[org/mate/desktop/peripherals/keyboard/kbd]
+options=['caps\tcaps:escape']
+
 [org/mate/desktop/peripherals/mouse]
 cursor-size=24
 cursor-theme='mate-black'

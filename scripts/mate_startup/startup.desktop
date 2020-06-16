@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/ri/.startup.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name[en_US]=.startup.sh
+Name=.startup.sh
+Comment[en_US]=.startup.sh
+Comment=.startup.sh
+X-MATE-Autostart-Delay=3
