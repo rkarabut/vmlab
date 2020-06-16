@@ -17,7 +17,7 @@ sudo apt-get -qq -y update
 
 # aptitude autofixes some held packages problems after switching to testing
 sudo aptitude -qq -y install cmake build-essential
-sudo aptitude -qq -y install lightdm mate-desktop-environment terminator vim-nox fish git 
+sudo aptitude -qq -y install lightdm mate-desktop-environment terminator vim-nox fish git firefox-esr 
 
 sudo sed -i 's/.*autologin-user.*/autologin-user=ri/' /etc/lightdm/lightdm.conf 
 sudo sed -i 's/.*autologin-session.*/autologin-session=mate/' /etc/lightdm/lightdm.conf 

@@ -51,6 +51,9 @@ window-size=(1234, 904)
 [org/mate/atril/default]
 window-ratio=(3.2253946068714341, 1.1913670432004182)
 
+[org/mate/caja/desktop]
+font='DejaVu Sans 10'
+
 [org/mate/caja/preferences]
 always-use-location-entry=true
 
@@ -91,6 +94,9 @@ primary-color='rgb(88,145,188)'
 secondary-color='rgb(60,143,37)'
 
 [org/mate/desktop/interface]
+document-font-name='DejaVu Sans 10'
+font-name='DejaVu Sans 10'
+monospace-font-name='Hack Nerd Font Mono 11'
 gtk-color-scheme='bg_color_dark:#686868\ntext_color_dark:#FFF'
 gtk-theme='Greybird'
 icon-theme='Tango'
@@ -137,12 +143,13 @@ window-width=600
 
 [org/mate/marco/general]
 theme='Numix'
+titlebar-font='DejaVu Sans 10'
 
 [org/mate/marco/global-keybindings]
 run-command-terminal='<Primary><Alt>Cyrillic_ie'
 
 [org/mate/panel/general]
-history-mate-run=['steam', 'xterm', 'terminator', 'mate-terminal']
+history-mate-run=[]
 object-id-list=['menu-bar', 'notification-area', 'clock', 'show-desktop', 'window-list', 'workspace-switcher', 'object-0', 'object-1']
 toplevel-id-list=['top', 'bottom']
 
@@ -174,14 +181,14 @@ position=10
 toplevel-id='top'
 
 [org/mate/panel/objects/object-0]
-launcher-location='/home/tr/Рабочий стол/mate-terminal.desktop'
+launcher-location='/usr/share/applications/mate-terminal.desktop'
 object-type='launcher'
 panel-right-stick=false
 position=300
 toplevel-id='top'
 
 [org/mate/panel/objects/object-1]
-launcher-location='firefox.desktop'
+launcher-location='/usr/share/applications/firefox-esr.desktop'
 object-type='launcher'
 panel-right-stick=false
 position=327
@@ -263,4 +270,4 @@ palette='#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#
 silent-bell=true
 use-system-font=false
 use-theme-colors=false
-visible-name='По умолчанию'
+visible-name='Default'
