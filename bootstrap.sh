@@ -17,7 +17,11 @@ sudo apt-get -q -y update
 
 # aptitude autofixes some held packages problems after switching to testing
 sudo aptitude -q -y install cmake build-essential
-sudo aptitude -q -y install lightdm fluxbox terminator vim-nox fish 
+sudo aptitude -q -y install lightdm mate-desktop-environment terminator vim-nox fish 
 
 sudo sed -i 's/.*autologin-user.*/autologin-user=ri/' /etc/lightdm/lightdm.conf 
-sudo sed -i 's/.*autologin-session.*/autologin-session=fluxbox/' /etc/lightdm/lightdm.conf 
+sudo sed -i 's/.*autologin-session.*/autologin-session=mate/' /etc/lightdm/lightdm.conf 
+
+for d in $(find /tmp/scripts -mindepth 1 -maxdepth 1 -type d); do
+  ( cd $d && ./setup.sh )
+done

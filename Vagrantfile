@@ -1,4 +1,4 @@
-VM_SYNCED_FOLDER = ENV["VM_SYNCED_FOLDER"]
+VM_SYNCED_FOLDER = ENV["VM_SYNCED_FOLDER"] || "~/shared"
 VM_RAM = ENV["VM_RAM"] || 3072
 VM_NAME = ENV["VM_NAME"] || "ri-base-lab"
 
@@ -20,7 +20,9 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
   end
 
-  config.vm.provision :shell, path: "scripts/bootstrap.sh"
+  config.vm.provision "upload-scripts", type: "file", source: "./scripts", destination: "/tmp/scripts"  
+
+  config.vm.provision "bootstrap", type: "shell", after: "upload-scripts", path: "bootstrap.sh"
 
   config.vbguest.auto_update = true
   
