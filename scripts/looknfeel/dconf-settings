@@ -152,7 +152,7 @@ titlebar-font='DejaVu Sans 10'
 run-command-terminal='<Primary><Alt>Cyrillic_ie'
 
 [org/mate/panel/general]
-history-mate-run=[]
+history-mate-run=['mate-terminal']
 object-id-list=['menu-bar', 'notification-area', 'clock', 'show-desktop', 'window-list', 'workspace-switcher', 'object-0', 'object-1']
 toplevel-id-list=['top', 'bottom']
 

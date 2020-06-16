@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-chmod +x .startup.sh
 cp .startup.sh ~
-cp startup.desktop ~/.config/autostart/
+chmod +x ~/.startup.sh
+mkdir -p ~/.config/autostart && cp startup.desktop ~/.config/autostart/
