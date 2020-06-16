@@ -7,4 +7,4 @@ Name[en_US]=.startup.sh
 Name=.startup.sh
 Comment[en_US]=.startup.sh
 Comment=.startup.sh
-X-MATE-Autostart-Delay=3
+X-MATE-Autostart-Delay=0
