@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# add the ri user
+export VM_USERNAME=ri
+export VM_PASSWORD=ri
+
+# add the user 
 sudo groupadd -r autologin
-sudo useradd -m -p saA3Gu85b.CZM ri -G sudo,autologin -s /bin/bash # password: ri
+VM_PASSWORD_HASH=$(perl -e 'print crypt($ARGV[0], "salt"),"\n"' $VM_PASSWORD)
+sudo useradd -m -p $VM_PASSWORD_HASH $VM_USERNAME -G sudo,autologin -s /bin/bash 
 
 sudo apt-get -qq -y update
 
@@ -19,16 +23,16 @@ sudo apt-get -qq -y update
 sudo aptitude -q=2 -y install cmake build-essential
 sudo aptitude -q=2 -y install lightdm mate-desktop-environment terminator vim-nox fish git firefox-esr 
 
-sudo sed -i 's/.*autologin-user.*/autologin-user=ri/' /etc/lightdm/lightdm.conf 
+sudo sed -i "s/.*autologin-user.*/autologin-user=$VM_USERNAME" /etc/lightdm/lightdm.conf 
 sudo sed -i 's/.*autologin-session.*/autologin-session=mate/' /etc/lightdm/lightdm.conf 
 
 # let the user get root with no password for a bit
 cp /etc/sudoers /etc/sudoers.bak
-echo "ri ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+echo "$VM_USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 for d in $(find /tmp/scripts -mindepth 1 -maxdepth 1 -type d | sort); do
   echo "Running $(basename $d) ..."
-  ( cd $d && su ri setup.sh )
+  ( cd $d && chown -R $VM_USERNAME * && su $VM_USERNAME setup.sh )
   echo "Finished running $(basename $d)"
 done
 
