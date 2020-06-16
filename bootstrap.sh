@@ -23,8 +23,8 @@ sudo apt-get -qq -y update
 sudo aptitude -q=2 -y install cmake build-essential
 sudo aptitude -q=2 -y install lightdm mate-desktop-environment terminator vim-nox fish git firefox-esr 
 
-sudo sed -i "s/.*autologin-user.*/autologin-user=$VM_USERNAME" /etc/lightdm/lightdm.conf 
-sudo sed -i 's/.*autologin-session.*/autologin-session=mate/' /etc/lightdm/lightdm.conf 
+sudo sed -i "s/.*autologin-user.*/autologin-user = $VM_USERNAME/" /etc/lightdm/lightdm.conf 
+sudo sed -i 's/.*autologin-session.*/autologin-session = mate/' /etc/lightdm/lightdm.conf 
 
 # let the user get root with no password for a bit
 cp /etc/sudoers /etc/sudoers.bak
