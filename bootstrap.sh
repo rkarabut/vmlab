@@ -12,7 +12,7 @@ sudo mount /dev/sda3 /mnt
 sudo cp -rfp /home/* /mnt
 sudo umount /mnt
 sudo mount /dev/sda3 /home
-echo "/dev/sda3 /home ext4 user 0 0" | sudo tee -a /etc/fstab 
+echo "/dev/sda3 /home ext4 defaults 0 0" | sudo tee -a /etc/fstab 
 
 # add the user 
 sudo groupadd -r autologin
