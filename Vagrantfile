@@ -1,10 +1,11 @@
-VM_SYNCED_FOLDER = ENV["VM_SYNCED_FOLDER"] || "~/shared"
-VM_RAM = ENV["VM_RAM"] || 3072
+VM_SYNCED_FOLDER = ENV["VM_SYNCED_FOLDER"] || "d:/vm/shared"
+VM_RAM = ENV["VM_RAM"] || 4096
 VM_NAME = ENV["VM_NAME"] || "ri-base-lab"
 
 Vagrant.configure("2") do |config|
-  config.vagrant.plugins = "vagrant-vbguest"
+  config.vagrant.plugins = ["vagrant-vbguest", "vagrant-disksize"]
   
+  config.disksize.size = '40GB'
   config.vm.box = "debian/buster64"
   config.vm.hostname = VM_NAME
 
