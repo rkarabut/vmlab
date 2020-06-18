@@ -2,6 +2,7 @@
 set -e
 
 DIR=$(pwd)
+chmod +x *.sh
 
 cd 
 
