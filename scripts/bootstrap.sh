@@ -36,4 +36,7 @@ sudo aptitude -q=2 -y install lightdm mate-desktop-environment terminator vim-no
 sudo sed -i "s/.*autologin-user.*/autologin-user = $VM_USERNAME/" /etc/lightdm/lightdm.conf 
 sudo sed -i 's/.*autologin-session.*/autologin-session = mate/' /etc/lightdm/lightdm.conf 
 
+# don't ask the user for password
 echo "$VM_USERNAME ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers >/dev/null
+
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py | sudo python
