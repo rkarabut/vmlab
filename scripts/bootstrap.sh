@@ -1,13 +1,10 @@
 #!/bin/bash
 set -e
 
-export VM_USERNAME=ri
-export VM_PASSWORD=ri
-
 # add the /home partition (for the expanded disk)
 if [[ ! -e /dev/sda3 ]]; then
     echo 41531392 | sudo sfdisk -a /dev/sda -N 3 --force
-    sudo partx -v -a /dev/sda || true
+    sudo partx -v -a /dev/sda >/dev/null 2>&1 || true
     sudo mkfs.ext4 /dev/sda3
     sudo mount /dev/sda3 /mnt
     sudo cp -rfp /home/* /mnt
@@ -39,15 +36,4 @@ sudo aptitude -q=2 -y install lightdm mate-desktop-environment terminator vim-no
 sudo sed -i "s/.*autologin-user.*/autologin-user = $VM_USERNAME/" /etc/lightdm/lightdm.conf 
 sudo sed -i 's/.*autologin-session.*/autologin-session = mate/' /etc/lightdm/lightdm.conf 
 
-# let the user get root with no password for a bit
-cp /etc/sudoers /etc/sudoers.bak
-echo "$VM_USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-for d in $(find /tmp/scripts -mindepth 1 -maxdepth 1 -type d | sort); do
-  echo "Running $(basename $d) ..."
-  ( cd $d && chown -R $VM_USERNAME * && su $VM_USERNAME setup.sh )
-  rm -rf $d
-  echo "Finished running $(basename $d)"
-done
-
-mv /etc/sudoers.bak /etc/sudoers
+echo "$VM_USERNAME ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers >/dev/null

@@ -2,6 +2,11 @@ VM_SYNCED_FOLDER = ENV["VM_SYNCED_FOLDER"] || "d:/vm/shared"
 VM_RAM = ENV["VM_RAM"] || 4096
 VM_NAME = ENV["VM_NAME"] || "ri-base-lab"
 
+SHELL_ENV = {
+    "VM_USERNAME": "ri",
+    "VM_PASSWORD": "ri",
+}
+
 Vagrant.configure("2") do |config|
   config.vagrant.plugins = ["vagrant-vbguest", "vagrant-disksize"]
   
@@ -21,9 +26,11 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
   end
 
-  config.vm.provision "upload-scripts", type: "file", source: "./scripts", destination: "/tmp/scripts"  
+  config.vm.provision "upload-scripts", type: "file", source: "./scripts/user", destination: "/tmp/scripts"  
 
-  config.vm.provision "bootstrap", type: "shell", after: "upload-scripts", path: "bootstrap.sh"
+  config.vm.provision "bootstrap", type: "shell", after: "upload-scripts", path: "./scripts/bootstrap.sh", env: SHELL_ENV
+
+  config.vm.provision "run-scripts", type: "shell", after: "bootstrap", path: "./scripts/run_scripts.sh", env: SHELL_ENV
 
   config.vbguest.auto_update = true
   
