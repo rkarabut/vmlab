@@ -6,11 +6,10 @@ chmod +x *.sh
 
 cd 
 
-# get download link
-DOWNLOAD_LINK=`curl -s https://developer.android.com/studio\#downloads | grep -Po "(https://).+?(commandlinetools-linux-\d+).+?latest.zip"`
+SDK_URL=`curl -s https://developer.android.com/studio\#downloads | grep -Po "(https://).+?(commandlinetools-linux-\d+).+?latest.zip"`
 
-# donwload the tools
-wget -q -O "android-sdk-tools.zip" $DOWNLOAD_LINK
+# download the tools
+wget -q -O "android-sdk-tools.zip" $SDK_URL
 unzip android-sdk-tools.zip && rm -f ./android-sdk-tools.zip
 
 mkdir -p $HOME/.android/sdk
