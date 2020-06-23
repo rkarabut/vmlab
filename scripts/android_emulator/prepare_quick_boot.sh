@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-export SDK_ROOT=~/Android/Sdk
+export SDK_ROOT=~/.android/sdk
 
 $SDK_ROOT/platform-tools/adb start-server
 $SDK_ROOT/emulator/emulator -avd 5.1_WVGA_API_25 -gpu swiftshader_indirect -no-window &
