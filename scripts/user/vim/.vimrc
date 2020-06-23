@@ -1,46 +1,55 @@
 set exrc
 
-" required for Vundle
-
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.vim/plugged')
 
-call vundle#begin()
+    " add plugins here 
+    Plug 'valloric/youcompleteme', {'do': './install.py --clangd-completer'}
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
-    Plugin 'gmarik/Vundle.vim'
+    " Markdown
+    Plug 'tpope/vim-markdown'
+    Plug 'junegunn/goyo.vim'
 
-    Plugin 'tpope/vim-markdown'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-syntastic/syntastic'
-    Plugin 'tpope/vim-surround'
-    Plugin 'tpope/vim-repeat'
-	Plugin 'tpope/vim-eunuch'
-	Plugin 'michaeljsmith/vim-indent-object'
+    " Git
+    Plug 'tpope/vim-fugitive'
+
+    " Misc
+    Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-syntastic/syntastic'
+    "Plug 'beloglazov/vim-online-thesaurus'  
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
+	Plug 'tpope/vim-eunuch'
+	Plug 'michaeljsmith/vim-indent-object'
 
 	" Finders
     if executable('fzf')
-        Plugin 'junegunn/fzf'
-        Plugin 'junegunn/fzf.vim'
+        Plug 'junegunn/fzf'
+        Plug 'junegunn/fzf.vim'
     else
-        Plugin 'ctrlpvim/ctrlp.vim'
+        Plug 'ctrlpvim/ctrlp.vim'
     endif
     
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'croaker/mustang-vim'
+    Plug 'kien/rainbow_parentheses.vim'
+
+    " Themes
+    "Plug 'https://github.com/chriskempson/vim-tomorrow-theme'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'croaker/mustang-vim'
 
 	" Nav
-	Plugin 'easymotion/vim-easymotion'
-    Plugin 'yuttie/comfortable-motion.vim'
+	Plug 'easymotion/vim-easymotion'
+    Plug 'yuttie/comfortable-motion.vim'
 
-	Plugin 'majutsushi/tagbar'
-call vundle#end()
+	Plug 'majutsushi/tagbar'
+call plug#end()
 
-filetype plugin indent on " language-dependent indenting
+filetype plugin indent on
 
 set path+=** "matches everything under the base directory tree
 
@@ -48,9 +57,9 @@ set wildmenu "upgrades tab completion for buffer/file selection
 
 set relativenumber
 
-set clipboard=unnamed
-set paste
+set clipboard=unnamedplus
 
+"set nocompatible " already set
 set backspace=indent,eol,start  " allow backspace in insert mode
 
 set expandtab
@@ -66,16 +75,15 @@ set smarttab
 set hlsearch
 set incsearch
 set title
+"set visualbell
 set history=1000
 set undolevels=1000
 set pastetoggle=<F2>
-set ttyfast
-set mouse=a
+filetype plugin indent on " language-dependent indenting
 
 set term=xterm
 set t_Co=256
 colorscheme mustang
-
 syntax on
 
 " Airline
@@ -86,6 +94,8 @@ let g:airline_powerline_fonts = 1
 " nerdcommenter
 let g:NERDSpaceDelims = 1
 
+set ttyfast
+set mouse=a
 
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -114,9 +124,9 @@ endif
 let g:EasyMotion_do_mapping=0 " disable default mappings
 let g:EasyMotion_smartcase=1  " enable case-insensitive search
 nmap s <Plug>(easymotion-overwin-f2)
-nmap , <Plug>(easymotion-bd-w)
+nmap <space> <Plug>(easymotion-bd-w)
     
-map <bs> :pop<cr>
+map <bs> <c-o><cr>
 
 map <F3> :NERDTreeToggle<CR>
 
@@ -135,14 +145,23 @@ endif
 
 ":autocmd VimEnter * :AirlineRefresh
 
+let g:ycm_confirm_extra_conf = 0
+
+nmap <silent> gd :YcmCompleter GoToDefinition<cr>
+nmap <silent> gi :YcmCompleter GoToImprecise<cr>
+nmap <silent> gr :YcmCompleter GoToReferences<cr>
+nmap <silent> gt :YcmCompleter GoTo<cr>
+
 " retain visual selection after indenting:
 vnoremap > >gv
 vnoremap < <gv
 
-" better Cyrillic support
+" Russian
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
+
+au VimEnter * RainbowParenthesesToggle
 
 noremap <M-LeftMouse> <4-LeftMouse>
 inoremap <M-LeftMouse> <4-LeftMouse>
@@ -150,3 +169,8 @@ onoremap <M-LeftMouse> <C-C><4-LeftMouse>
 noremap <M-LeftDrag> <4-LeftDrag>
 inoremap <M-LeftDrag> <4-LeftDrag>
 onoremap <M-LeftDrag> <C-C><4-LeftDrag>
+
+if executable('imcat')
+    map <F9> :term ++curwin imcat %<cr>
+endif
+
