@@ -28,7 +28,7 @@ rm -rf $HOME/ghidra
 ln -s $HOME/work/$GHIDRA_DIR/ghidraRun $HOME/ghidra
 mkdir -p $HOME/.ghidra/.$GHIDRA_DIR
 
-echo "USER_AGREEMENT=ACCEPT" >> $HOME/.ghidra/.$GHIDRA_DIR/preferences
+#echo "USER_AGREEMENT=ACCEPT" >> $HOME/.ghidra/.$GHIDRA_DIR/preferences
 echo "SHOW_TIPS=false" >> $HOME/.ghidra/.$GHIDRA_DIR/preferences
 echo "GhidraShowWhatsNew=false" >> $HOME/.ghidra/.$GHIDRA_DIR/preferences
 
