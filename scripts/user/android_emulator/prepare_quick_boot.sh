@@ -12,7 +12,7 @@ while true; do
     fi
 
     lines=$($SDK_ROOT/platform-tools/adb logcat -d 'AlertService' -s -e BOOT_COMPLETED)
-    if [[ "1" -eq "$(echo $lines | grep BOOT_COMPLETED | wc -l)" ]]; then
+    if [[ ! -z "$lines" ]]; then
         # emu kill already saves a snapshot
         #$SDK_ROOT/platform-tools/adb emu avd snapshot save default 
         $SDK_ROOT/platform-tools/adb emu kill
