@@ -5,14 +5,16 @@ export VM_USERNAME=ri
 export VM_PASSWORD=ri
 
 # add the /home partition (for the expanded disk)
-echo 41531392 | sudo sfdisk -a /dev/sda -N 3 --force
-sudo partx -v -a /dev/sda || true
-sudo mkfs.ext4 /dev/sda3
-sudo mount /dev/sda3 /mnt
-sudo cp -rfp /home/* /mnt
-sudo umount /mnt
-sudo mount /dev/sda3 /home
-echo "/dev/sda3 /home ext4 defaults 0 0" | sudo tee -a /etc/fstab 
+if [[ ! -e /dev/sda3 ]]; then
+    echo 41531392 | sudo sfdisk -a /dev/sda -N 3 --force
+    sudo partx -v -a /dev/sda || true
+    sudo mkfs.ext4 /dev/sda3
+    sudo mount /dev/sda3 /mnt
+    sudo cp -rfp /home/* /mnt
+    sudo umount /mnt
+    sudo mount /dev/sda3 /home
+    echo "/dev/sda3 /home ext4 defaults 0 0" | sudo tee -a /etc/fstab 
+fi
 
 # add the user 
 sudo groupadd -r autologin
