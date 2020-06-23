@@ -4,7 +4,7 @@ set -e
 export SDK_ROOT=$HOME/Android/Sdk
 
 $SDK_ROOT/platform-tools/adb start-server
-$SDK_ROOT/emulator/emulator -avd 5.1_WVGA_API_25 -no-window &
+$SDK_ROOT/emulator/emulator -avd 5.1_WVGA_API_25 -no-window -gpu swiftshader_indirect &
 
 while true; do
     if [[ -z $(pgrep emulator) ]]; then

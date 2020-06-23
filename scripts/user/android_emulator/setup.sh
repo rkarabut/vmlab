@@ -30,7 +30,8 @@ yes | ./tools/bin/sdkmanager --install "system-images;android-25;default;x86" > 
 ./tools/bin/avdmanager create avd -d "5.1in WVGA" -n "$AVD_NAME" -k "system-images;android-25;default;x86" --force > /dev/null
 
 echo 'hw.cpu.ncore=1' >> $HOME/.android/avd/$AVD_NAME.avd/config.ini
-sed -i 's/hw\.gpu\.mode=.*/hw\.gpu\.mode=swiftshader_indirect/' $HOME/.android/avd/$AVD_NAME.avd/config.ini 
+# TODO setting hw.gpu.mode in config.ini doesn't work for some reason
+# sed -i 's/hw\.gpu\.mode=.*/hw\.gpu\.mode=swiftshader_indirect/' $HOME/.android/avd/$AVD_NAME.avd/config.ini 
 )
 
 $DIR/prepare_quick_boot.sh   
