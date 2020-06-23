@@ -16,7 +16,7 @@ fi
 # add the user 
 sudo groupadd -r autologin
 VM_PASSWORD_HASH=$(perl -e 'print crypt($ARGV[0], "salt"),"\n"' $VM_PASSWORD)
-sudo useradd -m -p $VM_PASSWORD_HASH $VM_USERNAME -G sudo,autologin -s /bin/bash 
+sudo useradd -m -p $VM_PASSWORD_HASH $VM_USERNAME -G sudo,autologin,kvm -s /bin/bash 
 
 sudo apt-get -qq -y update
 
