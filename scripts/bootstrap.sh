@@ -39,4 +39,6 @@ sudo sed -i 's/.*autologin-session.*/autologin-session = mate/' /etc/lightdm/lig
 # don't ask the user for password
 echo "$VM_USERNAME ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers >/dev/null
 
+echo 'PATH="$HOME/.local/bin:$PATH"' | sudo tee -a /home/$VM_USERNAME/.bashrc
+
 curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py | sudo python
