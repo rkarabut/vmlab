@@ -31,7 +31,7 @@ sudo apt-get -qq -y update
 
 # aptitude autofixes some held packages problems after switching to testing
 sudo aptitude -q=2 -y install cmake build-essential
-sudo aptitude -q=2 -y install lightdm mate-desktop-environment terminator vim-nox fish git firefox-esr 
+sudo aptitude -q=2 -y install lightdm mate-desktop-environment vim-nox fish git firefox-esr python3-pip
 
 sudo sed -i "s/.*autologin-user.*/autologin-user = $VM_USERNAME/" /etc/lightdm/lightdm.conf 
 sudo sed -i 's/.*autologin-session.*/autologin-session = mate/' /etc/lightdm/lightdm.conf 
