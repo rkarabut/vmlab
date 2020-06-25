@@ -101,6 +101,11 @@ gtk-color-scheme='bg_color_dark:#686868\ntext_color_dark:#FFF'
 gtk-theme='Greybird'
 icon-theme='Tango'
 
+[org/mate/desktop/keybindings/custom0]
+action='bash -c "sleep 0.1 && mate-screenshot -a"'
+binding='<Shift><Mod4>s'
+name='Area screenshot'
+
 [org/mate/desktop/peripherals/keyboard]
 numlock-state='on'
 
