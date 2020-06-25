@@ -62,6 +62,8 @@ set clipboard=unnamedplus
 "set nocompatible " already set
 set backspace=indent,eol,start  " allow backspace in insert mode
 
+set encoding=utf-8
+
 set expandtab
 set tabstop=4       " smaller tabs
 set shiftwidth=4
