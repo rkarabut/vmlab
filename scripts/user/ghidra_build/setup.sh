@@ -25,7 +25,8 @@ mkdir -p work/ && cd work
 GHIDRA_DIR=$(unzip -t $HOME/ghidra/build/dist/ghidra*.zip | head -n2 | tail -n1 | awk '{print $2}')
 unzip -qq -n $HOME/ghidra/build/dist/ghidra*.zip
 rm -rf $HOME/ghidra
-ln -s $HOME/work/$GHIDRA_DIR/ghidraRun $HOME/ghidra
+mkdir -p $HOME/.local/bin
+ln -s $HOME/work/$GHIDRA_DIR/ghidraRun $HOME/.local/bin/ghidra
 mkdir -p $HOME/.ghidra/.$GHIDRA_DIR
 
 #echo "USER_AGREEMENT=ACCEPT" >> $HOME/.ghidra/.$GHIDRA_DIR/preferences
