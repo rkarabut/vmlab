@@ -5,7 +5,7 @@ DIR=$(pwd)
 
 cd 
 
-sudo apt-get -y install openjdk-11-jre
+sudo apt-get -qq -y install openjdk-11-jre
 
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -15,7 +15,7 @@ git clone https://github.com/NationalSecurityAgency/ghidra.git
 
 (cd ghidra
 
-sudo apt-get -y install openjdk-11-jdk bison flex
+sudo apt-get -qq -y install openjdk-11-jdk bison flex
 gradle --init-script gradle/support/fetchDependencies.gradle init
 gradle buildGhidra
 )

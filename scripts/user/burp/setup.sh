@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-sudo apt-get -y install openjdk-11-jre
+sudo apt-get -qq -y install openjdk-11-jre
 
 cd /tmp
 BURP_FILENAME=$(curl -sL https://portswigger.net/burp/releases/community/latest | grep burpsuite_community.*jar | sed 's/.*\(burpsuite_community.*\.jar\).*/\1/')
