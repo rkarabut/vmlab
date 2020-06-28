@@ -34,6 +34,6 @@ Vagrant.configure("2") do |config|
 
   config.vbguest.auto_update = true
   
-  config.vm.synced_folder VM_SYNCED_FOLDER, "/mnt/shared", automount: true
+  config.vm.synced_folder VM_SYNCED_FOLDER, "shared", automount: true
 
 end
