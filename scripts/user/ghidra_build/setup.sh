@@ -16,8 +16,8 @@ git clone https://github.com/NationalSecurityAgency/ghidra.git
 (cd ghidra
 
 sudo apt-get -qq -y install openjdk-11-jdk bison flex
-gradle --init-script gradle/support/fetchDependencies.gradle init
-gradle buildGhidra
+gradle --init-script gradle/support/fetchDependencies.gradle init >/dev/null 2>&1
+gradle buildGhidra >/dev/null
 )
 
 mkdir -p work/ && cd work
