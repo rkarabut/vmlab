@@ -2,6 +2,8 @@
 set -e
 
 sudo apt-get -qq -y install vim-nox fzf silversearcher-ag libpython3-dev
+pip install ranger -q
+
 cp .vimrc ~/.vimrc
 if [[ ! -d ~/.vim/autoload/plug.vim ]] ; then
     curl -sfLo ~/.vim/autoload/plug.vim --create-dirs \

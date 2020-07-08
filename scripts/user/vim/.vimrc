@@ -47,6 +47,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'yuttie/comfortable-motion.vim'
 
 	Plug 'majutsushi/tagbar'
+
+    Plug 'francoiscabrol/ranger.vim'
 call plug#end()
 
 filetype plugin indent on
