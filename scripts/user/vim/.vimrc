@@ -85,6 +85,9 @@ set undolevels=1000
 set pastetoggle=<F2>
 filetype plugin indent on " language-dependent indenting
 
+" copy more lines between files
+set viminfo='100,<9999,s100
+
 set term=xterm
 set t_Co=256
 colorscheme mustang
