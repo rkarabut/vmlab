@@ -34,6 +34,7 @@ Vagrant.configure("2") do |config|
 
   config.vbguest.auto_update = true
   
+  # the folder ends up in /media/sf_shared for VirtualBox
   config.vm.synced_folder VM_SYNCED_FOLDER, "/shared", automount: true
 
 end
