@@ -32,7 +32,7 @@ sudo apt-get -qq -y update
 # aptitude autofixes some held packages problems after switching to testing
 sudo aptitude -q=2 -y install cmake build-essential
 sudo aptitude -q=2 -y install lightdm mate-desktop-environment vim-nox fish git \
-    jq proxychains firefox-esr python3-pip
+    jq proxychains firefox-esr python3-pip php-cli
 
 sudo sed -i "s/.*autologin-user.*/autologin-user = $VM_USERNAME/" /etc/lightdm/lightdm.conf 
 sudo sed -i 's/.*autologin-session.*/autologin-session = mate/' /etc/lightdm/lightdm.conf 
@@ -42,4 +42,4 @@ echo "$VM_USERNAME ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers >/dev/null
 
 echo 'PATH="$HOME/.local/bin:$PATH"' | sudo tee -a /home/$VM_USERNAME/.bashrc
 
-curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py | sudo python
+curl -s https://bootstrap.pypa.io/get-pip.py | sudo python2
