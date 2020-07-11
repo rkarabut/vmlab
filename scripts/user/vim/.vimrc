@@ -49,6 +49,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'majutsushi/tagbar'
 
     Plug 'francoiscabrol/ranger.vim'
+
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 filetype plugin indent on

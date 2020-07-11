@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-sudo apt-get -qq -y install vim-nox fzf silversearcher-ag libpython3-dev
+sudo apt-get -qq -y install vim-nox fzf silversearcher-ag libpython3-dev xdg-utils
 
 cp .vimrc ~/.vimrc
 if [[ ! -d ~/.vim/autoload/plug.vim ]] ; then
