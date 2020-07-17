@@ -37,6 +37,9 @@ call plug#begin('~/.vim/plugged')
     
     Plug 'kien/rainbow_parentheses.vim'
 
+    " Writing
+	Plug 'reedes/vim-pencil'
+
     " Themes
     "Plug 'https://github.com/chriskempson/vim-tomorrow-theme'
     Plug 'vim-airline/vim-airline-themes'
@@ -60,6 +63,10 @@ set path+=** "matches everything under the base directory tree
 set wildmenu "upgrades tab completion for buffer/file selection
 
 set relativenumber
+set numberwidth=3 " 3 is enough
+
+"set signcolumn=yes " always show the error column, to prevent jarring jumps
+set signcolumn=number " better yet, put them in the numbers column
 
 set clipboard=unnamedplus
 
@@ -142,6 +149,13 @@ map <F3> :NERDTreeToggle<CR>
 let g:tagbar_autoclose=1
 map <F8> :TagbarToggle<CR>
 
+let g:pencil#wrapModeDefault = 'soft'   
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd,text call pencil#init()
+augroup END
+
 vmap <tab> >gv
 vmap <s-tab> <gv
 
@@ -179,7 +193,6 @@ noremap <M-LeftDrag> <4-LeftDrag>
 inoremap <M-LeftDrag> <4-LeftDrag>
 onoremap <M-LeftDrag> <C-C><4-LeftDrag>
 
-if executable('imcat')
-    map <F9> :term ++curwin imcat %<cr>
-endif
-
+" 'fix' for https://github.com/vim/vim/issues/5617 (random [>4;2m appearing)
+let &t_TI=""
+let &t_TE=""
