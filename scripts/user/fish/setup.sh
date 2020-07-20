@@ -6,10 +6,10 @@ set -e
 
 sudo apt-get -qq -y install libncurses-dev cmake
 
-git clone https://github.com/fish-shell/fish-shell.git
+git clone -q https://github.com/fish-shell/fish-shell.git
 cd fish
 mkdir build && cd build
-cmake ..
+cmake .. >/dev/null 2>/dev/null
 make && sudo make install
 sudo ln -s /usr/local/bin/fish /usr/bin/fish
 
