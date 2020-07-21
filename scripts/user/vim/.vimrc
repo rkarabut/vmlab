@@ -6,7 +6,7 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
     " add plugins here 
-    Plug 'valloric/youcompleteme', {'do': './install.py --clangd-completer'}
+    Plug 'valloric/youcompleteme', {'do': './install.py --clangd-completer --rust-completer'}
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
     " Markdown
@@ -169,6 +169,13 @@ endif
 ":autocmd VimEnter * :AirlineRefresh
 
 let g:ycm_confirm_extra_conf = 0
+
+" sane preview popup settings
+set previewpopup=height:10,width:60,highlight:PMenuSbar
+set completeopt+=popup
+set completepopup=height:15,width:60,border:off,highlight:PMenuSbar
+
+let g:syntastic_rust_checkers = [] " remove cargo checker, takes up a lot of time even with no changes on writing
 
 nmap <silent> gd :YcmCompleter GoToDefinition<cr>
 nmap <silent> gi :YcmCompleter GoToImprecise<cr>
