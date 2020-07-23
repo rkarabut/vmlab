@@ -31,8 +31,11 @@ sudo apt-get -qq -y update
 
 # aptitude autofixes some held packages problems after switching to testing
 sudo aptitude -q=2 -y install cmake build-essential
-sudo aptitude -q=2 -y install lightdm mate-desktop-environment vim-nox fish git \
-    jq proxychains firefox-esr python3-pip php-cli linux-image-amd64
+sudo aptitude -q=2 -y install lightdm mate-desktop-environment vim-nox git \
+    jq proxychains firefox-esr python3-pip php-cli 
+
+# has to be done separately to prevent errors
+sudo aptitude -q=2 -y install linux-image-amd64
 
 sudo sed -i "s/.*autologin-user.*/autologin-user = $VM_USERNAME/" /etc/lightdm/lightdm.conf 
 sudo sed -i 's/.*autologin-session.*/autologin-session = mate/' /etc/lightdm/lightdm.conf 

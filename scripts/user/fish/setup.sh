@@ -7,10 +7,10 @@ set -e
 sudo apt-get -qq -y install libncurses-dev cmake
 
 git clone -q https://github.com/fish-shell/fish-shell.git
-cd fish
+cd fish-shell
 mkdir build && cd build
 cmake .. >/dev/null 2>/dev/null
-make && sudo make install
+make >/dev/null && sudo make install
 sudo ln -s /usr/local/bin/fish /usr/bin/fish
 
 if [[ ! -d $HOME/.local/share/omf ]]; then 
