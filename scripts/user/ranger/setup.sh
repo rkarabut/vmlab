@@ -10,6 +10,7 @@ sed -i 's/^set preview_images_method .*$/set preview_images_method terminology/'
 
 mkdir -p $HOME/.config/terminology/config/standard/
 cp terminology/base.cfg $HOME/.config/terminology/config/standard/
+cp -rf terminology/.elementary $HOME/
 
 if [[ ! -z $(which add_mate_launcher.sh) ]]; then
     # TODO: dconf refuses to work correctly without sudo -u $(whoami) 
