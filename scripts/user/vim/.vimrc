@@ -221,7 +221,7 @@ let &runtimepath.=','.vim_dir
 
 if has('persistent_undo')
     let undo_dir = expand(vim_dir . '/undo')
-    
+ 
     call system('mkdir ' . vim_dir)
     call system('mkdir ' . undo_dir)
     let &undodir = undo_dir
