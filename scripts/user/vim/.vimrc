@@ -5,10 +5,12 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 
-    " add plugins here
+    " Completion
     Plug 'valloric/youcompleteme', {'do': './install.py --clangd-completer --rust-completer'}
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+    Plug 'vim-scripts/dbext.vim'
 
+    " Snippets
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 
@@ -212,3 +214,18 @@ onoremap <M-LeftDrag> <C-C><4-LeftDrag>
 " 'fix' for https://github.com/vim/vim/issues/5617 (random [>4;2m appearing)
 let &t_TI=""
 let &t_TE=""
+
+" undo across sessions
+let vim_dir = '$HOME/.vim'
+let &runtimepath.=','.vim_dir
+
+if has('persistent_undo')
+    let undo_dir = expand(vim_dir . '/undo')
+    
+    call system('mkdir ' . vim_dir)
+    call system('mkdir ' . undo_dir)
+    let &undodir = undo_dir
+    set undofile
+    set undolevels=1000
+    set undoreload=10000    " max lines to save
+endif
