@@ -4,7 +4,7 @@ set -e
 # apt-get completion is broken in fish 3.1.2, building from master
 # sudo apt-get -qq -y install fish
 
-sudo apt-get -qq -y install libncurses-dev cmake
+sudo apt-get -qq -y install libncurses-dev cmake fzf
 
 git clone -q https://github.com/fish-shell/fish-shell.git
 cd fish-shell
