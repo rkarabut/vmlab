@@ -181,6 +181,18 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-up>"
 
 let g:ycm_complete_in_comments = 1
 
+if executable('rust-analyzer')
+    let g:ycm_language_server =
+    \ [
+    \   {
+    \     'name': 'rust',
+    \     'cmdline': ['rust-analyzer'],
+    \     'filetypes': ['rust'],
+    \     'project_root_files': ['Cargo.toml']
+    \   }
+    \ ]
+endif
+
 " sane preview popup settings
 set previewpopup=height:10,width:60,highlight:PMenuSbar
 set completeopt+=popup

@@ -9,4 +9,7 @@ if [[ ! -d ~/.vim/autoload/plug.vim ]] ; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o ~/.local/bin/rust-analyzer
+chmod +x ~/.local/bin/rust-analyzer
+
 vim -E -s -c "source ~/.vimrc" -c PlugInstall -c qa
