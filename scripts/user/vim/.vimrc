@@ -3,6 +3,9 @@ set exrc
 set nocompatible
 filetype off
 
+nnoremap <space> <nop>
+let mapleader=" "
+
 call plug#begin('~/.vim/plugged')
 
     " Completion
@@ -145,7 +148,7 @@ endif
 let g:EasyMotion_do_mapping=0 " disable default mappings
 let g:EasyMotion_smartcase=1  " enable case-insensitive search
 nmap s <Plug>(easymotion-overwin-f2)
-nmap <space> <Plug>(easymotion-bd-w)
+nmap <Leader><space> <Plug>(easymotion-bd-w)
 
 map <bs> <c-o><cr>
 
