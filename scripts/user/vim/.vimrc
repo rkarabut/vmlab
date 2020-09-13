@@ -78,7 +78,6 @@ set signcolumn=number " better yet, put them in the numbers column
 
 set clipboard=unnamedplus
 
-"set nocompatible " already set
 set backspace=indent,eol,start  " allow backspace in insert mode
 
 set encoding=utf-8
@@ -96,7 +95,6 @@ set smarttab
 set hlsearch
 set incsearch
 set title
-"set visualbell
 set history=1000
 set undolevels=1000
 set pastetoggle=<F2>
@@ -163,9 +161,6 @@ augroup pencil
   autocmd!
   autocmd FileType markdown,mkd,text call pencil#init()
 augroup END
-
-"vnoremap <tab> >gv
-"vnoremap <s-tab> <gv
 
 nnoremap <delete> dd
 
