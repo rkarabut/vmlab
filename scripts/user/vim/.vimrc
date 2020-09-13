@@ -160,8 +160,8 @@ map <F8> :TagbarToggle<CR>
 let g:pencil#wrapModeDefault = 'soft'
 
 augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd,text call pencil#init()
+  autocmd!
+  autocmd FileType markdown,mkd,text call pencil#init()
 augroup END
 
 "vnoremap <tab> >gv
