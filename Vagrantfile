@@ -1,6 +1,7 @@
 VM_SYNCED_FOLDER = ENV["VM_SYNCED_FOLDER"] || "d:/vm/shared"
 VM_RAM = ENV["VM_RAM"] || 4096
 VM_NAME = ENV["VM_NAME"] || "ri-base-lab"
+VM_DISK_SIZE = ENV["VM_DISK_SIZE"] || "40GB"
 
 SHELL_ENV = {
     "VM_USERNAME": "ri",
@@ -10,7 +11,7 @@ SHELL_ENV = {
 Vagrant.configure("2") do |config|
   config.vagrant.plugins = ["vagrant-vbguest", "vagrant-disksize"]
   
-  config.disksize.size = '40GB'
+  config.disksize.size = VM_DISK_SIZE
   config.vm.box = "debian/buster64"
   config.vm.hostname = VM_NAME
 
