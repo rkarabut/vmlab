@@ -34,6 +34,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-eunuch'
     Plug 'michaeljsmith/vim-indent-object'
+    Plug 'wfxr/minimap.vim'
 
     " Finders
     if executable('fzf')
@@ -154,6 +155,8 @@ map <F3> :NERDTreeToggle<CR>
 
 let g:tagbar_autoclose=1
 map <F8> :TagbarToggle<CR>
+
+map <F4> :MinimapToggle<CR>
 
 let g:pencil#wrapModeDefault = 'soft'
 
