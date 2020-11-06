@@ -25,6 +25,9 @@ call plug#begin('~/.vim/plugged')
     " Git
     Plug 'tpope/vim-fugitive'
 
+    " Rust
+    Plug 'rust-lang/rust.vim'
+
     " Misc
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
@@ -157,6 +160,9 @@ map <F8> :TagbarToggle<CR>
 
 map <F4> :MinimapToggle<CR>
 
+nmap <Leader>` :below terminal
+set termwinsize=10x0
+
 let g:pencil#wrapModeDefault = 'soft'
 
 augroup pencil
@@ -199,6 +205,7 @@ set completeopt+=popup
 set completepopup=height:15,width:60,border:off,highlight:PMenuSbar
 
 let g:syntastic_rust_checkers = [] " remove cargo checker, takes up a lot of time even with no changes on writing
+let g:cargo_shell_command_runner = 'below terminal'
 
 nmap <silent> gd :botright vertical YcmCompleter GoToDefinition<cr>
 nmap <silent> gi :YcmCompleter GoToImprecise<cr>
