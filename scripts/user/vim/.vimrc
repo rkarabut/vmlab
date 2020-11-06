@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'valloric/youcompleteme', {'do': './install.py --clangd-completer --rust-completer'}
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
     Plug 'vim-scripts/dbext.vim'
+    Plug 'mattn/emmet-vim'
 
     " Snippets
     Plug 'SirVer/ultisnips'
@@ -35,6 +36,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-eunuch'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'wfxr/minimap.vim'
+    Plug 'kien/rainbow_parentheses.vim'
 
     " Finders
     if executable('fzf')
@@ -44,13 +46,10 @@ call plug#begin('~/.vim/plugged')
         Plug 'ctrlpvim/ctrlp.vim'
     endif
 
-    Plug 'kien/rainbow_parentheses.vim'
-
     " Writing
     Plug 'reedes/vim-pencil'
 
     " Themes
-    "Plug 'https://github.com/chriskempson/vim-tomorrow-theme'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'croaker/mustang-vim'
 
@@ -201,7 +200,7 @@ set completepopup=height:15,width:60,border:off,highlight:PMenuSbar
 
 let g:syntastic_rust_checkers = [] " remove cargo checker, takes up a lot of time even with no changes on writing
 
-nmap <silent> gd :YcmCompleter GoToDefinition<cr>
+nmap <silent> gd :botright vertical YcmCompleter GoToDefinition<cr>
 nmap <silent> gi :YcmCompleter GoToImprecise<cr>
 nmap <silent> gr :YcmCompleter GoToReferences<cr>
 nmap <silent> gt :YcmCompleter GoTo<cr>
@@ -234,7 +233,7 @@ let &runtimepath.=','.vim_dir
 
 if has('persistent_undo')
     let undo_dir = expand(vim_dir . '/undo')
- 
+    
     call system('mkdir ' . vim_dir)
     call system('mkdir ' . undo_dir)
     let &undodir = undo_dir
