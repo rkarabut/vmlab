@@ -39,7 +39,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-eunuch'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'wfxr/minimap.vim'
-    Plug 'kien/rainbow_parentheses.vim'
+    Plug 'luochen1990/rainbow'
+    Plug 'Valloric/MatchTagAlways'
+    Plug 'mhinz/vim-startify'
 
     " Finders
     if executable('fzf')
@@ -59,6 +61,7 @@ call plug#begin('~/.vim/plugged')
     " Nav
     Plug 'easymotion/vim-easymotion'
     Plug 'yuttie/comfortable-motion.vim'
+    Plug 'unblevable/quick-scope'
 
     Plug 'majutsushi/tagbar'
 
@@ -119,6 +122,12 @@ let g:airline_powerline_fonts = 1
 " nerdcommenter
 let g:NERDSpaceDelims = 1
 
+" enable rainbow parentheses
+let g:rainbow_active = 1
+
+" quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
 set ttyfast
 set mouse=a
 
@@ -127,7 +136,9 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 if executable('fzf')
     nnoremap <leader>j :call fzf#vim#tags("'".expand('<cword>'))<cr>
     map <c-h> :FzfHistory<cr>
+    map <Leader>h :FzfHistory<cr>
     map <c-p> :FzfFiles<cr>
+    map <Leader>p :FzfFiles<cr>
     map <Leader>b :FzfBuffers<cr>
     command! -bang -nargs=* FzfAg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0) " prevent search in filenames
     map <Leader>a :FzfAg<cr>
@@ -151,6 +162,13 @@ let g:EasyMotion_smartcase=1  " enable case-insensitive search
 nmap s <Plug>(easymotion-overwin-f2)
 nmap <Leader><space> <Plug>(easymotion-bd-w)
 
+map <Leader>q :qa!<CR>
+map <Leader>w <c-w><c-w>
+map <Leader><Left> :wincmd h<CR>
+map <Leader><Right> :wincmd l<CR>
+map <Leader><Up> :wincmd k<CR>
+map <Leader><Down> :wincmd j<CR>
+
 map <bs> <c-o><cr>
 
 map <F3> :NERDTreeToggle<CR>
@@ -169,6 +187,15 @@ augroup pencil
   autocmd!
   autocmd FileType markdown,mkd,text call pencil#init()
 augroup END
+
+" let MatchTagAlways work with Rust files
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'rust' : 1,
+    \}
 
 nnoremap <delete> dd
 
@@ -221,14 +248,15 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
-au VimEnter * RainbowParenthesesToggle
-
 noremap <M-LeftMouse> <4-LeftMouse>
 inoremap <M-LeftMouse> <4-LeftMouse>
 onoremap <M-LeftMouse> <C-C><4-LeftMouse>
 noremap <M-LeftDrag> <4-LeftDrag>
 inoremap <M-LeftDrag> <4-LeftDrag>
 onoremap <M-LeftDrag> <C-C><4-LeftDrag>
+
+" make Home go to the first non-blank character
+nnoremap <Home> ^
 
 " 'fix' for https://github.com/vim/vim/issues/5617 (random [>4;2m appearing)
 let &t_TI=""
@@ -240,7 +268,7 @@ let &runtimepath.=','.vim_dir
 
 if has('persistent_undo')
     let undo_dir = expand(vim_dir . '/undo')
-    
+
     call system('mkdir ' . vim_dir)
     call system('mkdir ' . undo_dir)
     let &undodir = undo_dir
@@ -248,3 +276,13 @@ if has('persistent_undo')
     set undolevels=1000
     set undoreload=10000    " max lines to save
 endif
+
+autocmd User StartifyReady call ToggleSidebars()
+function! ToggleSidebars()
+    NERDTreeToggle
+    wincmd p
+    MinimapToggle
+endfunction
+
+" quickly close cargo output terminal buffer
+autocmd TerminalOpen * if &buftype ==# 'terminal'|nnoremap <buffer>q :q<CR>|endif
