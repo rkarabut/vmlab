@@ -178,7 +178,7 @@ map <F8> :TagbarToggle<CR>
 
 map <F4> :MinimapToggle<CR>
 
-nmap <Leader>` :below terminal
+nmap <Leader>` :below terminal<CR>
 set termwinsize=10x0
 
 let g:pencil#wrapModeDefault = 'soft'
