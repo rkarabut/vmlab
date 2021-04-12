@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 
-sudo apt-get -qq -y install vim-nox fzf silversearcher-ag libpython3-dev xdg-utils
+# vim-gtk is convenient to install for clipboard support
+sudo apt-get -qq -y install vim-nox fzf silversearcher-ag libpython3-dev xdg-utils vim-gtk
 
 cp .vimrc ~/.vimrc
 if [[ ! -d ~/.vim/autoload/plug.vim ]] ; then
