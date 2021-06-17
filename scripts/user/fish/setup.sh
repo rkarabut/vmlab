@@ -16,9 +16,12 @@ cmake .. >/dev/null 2>/dev/null
 make >/dev/null && sudo make install
 sudo ln -s /usr/local/bin/fish /usr/bin/fish
 
-if [[ ! -d $HOME/.local/share/omf ]]; then 
+echo $'export FZF_DEFAULT_COMMAND=\'rg --files --no-ignore --hidden --follow --glob "!.git/*"\'' \
+    | sudo tee -a $HOME/.bashrc
+
+if [[ ! -d $HOME/.local/share/omf ]]; then
     curl -s -L https://get.oh-my.fish > omf.fish
-    
+
     fish omf.fish --noninteractive
     fish -c 'omf install fzf z bobthefish'
 fi
