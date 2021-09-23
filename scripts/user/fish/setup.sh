@@ -7,7 +7,7 @@ set -e
 sudo apt-get -qq -y install libncurses-dev cmake
 
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-$HOME/.fzf/install
+$HOME/.fzf/install --all >/dev/null
 
 git clone -q https://github.com/fish-shell/fish-shell.git
 cd fish-shell
